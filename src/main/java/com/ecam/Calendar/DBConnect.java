@@ -1,36 +1,41 @@
 package com.ecam.Calendar;
+import com.jcraft.jsch.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
 public class DBConnect {
-    public static void Connect() throws ClassNotFoundException {
-        String userName = "user";
-        String password = "user";
-        String url1 = "jdbc:mysql://109.132.191.163:3306/Logiciel";
-        try {
+    public void Ping(){
+        String deviceUser = "pi";
+        String devicePassWord = "1453";
+        String deviceHostName = "109.132.191.163";
+        int sshPort =22;
+        int dbPort = 3306;
+        String dbUser = "user";
+        String dbHostName = "127.0.0.1";
+        String dbPassWord = "user";
+        String database="Logiciel";
+        Session session;
+        try{
+            java.util.Properties config = new java.util.Properties();
+            config.put("StrictHostKeyChecking", "no");
+            JSch jsch = new JSch();
+            session = jsch.getSession(deviceUser,deviceHostName,sshPort);
+            session.setPassword(devicePassWord);
+            session.setConfig(config);
+            int forwardedPort = session.setPortForwardingL(0,dbHostName,dbPort);
+            System.out.println("Establishing Connection ...");
+            session.connect();
+            System.out.println("Connection Established");
             DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-        } catch (SQLException e) {
+            System.out.println("Driver ok");
+            Connection con = DriverManager.getConnection("jdbc:mysql://"+dbHostName+":"+forwardedPort+"/"+database,dbUser,dbPassWord);
+            System.out.println("Db Connection established");
+        }catch (JSchException | SQLException e){
             e.printStackTrace();
         }
-        try {
-            Connection con = DriverManager.getConnection(url1,userName,password);
-            String query = "select id from test";
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(query);
-            while (rs.next())
-            {
-                int id = rs.getInt("id");
-                // print the results
-                System.out.format("%s\n", id);
-            }
-            st.close();
-        } catch (SQLException e) {
-
-            e.printStackTrace();
-        }
-        System.out.println("Hello World");
 
     }
+
 }
