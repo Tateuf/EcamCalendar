@@ -5,8 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
 public class DBConnect {
-
-    public static void main(String[] args) throws ClassNotFoundException {
+    public static void Connect() throws ClassNotFoundException {
         String userName = "user";
         String password = "user";
         String url1 = "jdbc:mysql://109.132.191.163:3306/Logiciel";
