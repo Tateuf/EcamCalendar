@@ -3,24 +3,34 @@ package com.ecam.Calendar.model;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 public class Lecture {
-    private final String topic;
     private final String code;
+    private Date day;
     private ArrayList<String> teachers;
     private String room;
     private Time start;
     private Time end;
     private final int sessionNumber;
 
-    public Lecture(String topic, String code, ArrayList<String> teachers, String room, Time start, Time end, int sessionNumber) {
-        this.topic = topic;
+    public Lecture(String code,Date day ,ArrayList<String> teachers, String room, Time start, Time end, int sessionNumber) {
+
         this.code = code;
+        this.day = day;
         this.teachers = teachers;
         this.room = room;
         this.start = start;
         this.end = end;
         this.sessionNumber = sessionNumber;
+    }
+
+    public Date getDay() {
+        return day;
+    }
+
+    public void setDay(Date day) {
+        this.day = day;
     }
 
     public ArrayList<String> getTeachers() {
@@ -55,9 +65,6 @@ public class Lecture {
         this.end = end;
     }
 
-    public String getTopic() {
-        return topic;
-    }
 
     public String getCode() {
         return code;
@@ -70,8 +77,8 @@ public class Lecture {
     @Override
     public String toString() {
         return "Lecture{" +
-                "topic='" + topic + '\'' +
-                ", code='" + code + '\'' +
+                "code='" + code + '\'' +
+                ", day='" + day + '\'' +
                 ", teachers=" + teachers +
                 ", room='" + room + '\'' +
                 ", start=" + start +

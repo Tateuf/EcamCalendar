@@ -2,6 +2,7 @@ package com.ecam.Calendar.web.controller;
 import com.ecam.Calendar.model.Lecture;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,11 +11,11 @@ import java.util.List;
 public class LectureController {
 
     @PostMapping("/Lecture/Create")
-    public Lecture lectureCreate(@RequestParam(value = "topic") String topic, @RequestParam(value = "code") String code ,
+    public Lecture lectureCreate(@RequestParam(value = "code") String code, @RequestParam(value = "day") String day,
                                  @RequestParam(value = "teachers") ArrayList<String> teachers, @RequestParam(value = "room") String room,
                                  @RequestParam(value = "start") String start, @RequestParam(value = "end") String end,
                                  @RequestParam(value = "sessionNumber") int sessionNumber) {
-        Lecture lecture = new Lecture(topic, code, teachers, room, Time.valueOf(start), Time.valueOf(end), sessionNumber);
+        Lecture lecture = new Lecture(code, Date.valueOf(day),teachers, room, Time.valueOf(start), Time.valueOf(end), sessionNumber);
         lecture.create();
         return lecture;
     }
