@@ -1,23 +1,26 @@
 package com.ecam.Calendar.model;
 
 import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Date;
+
 
 public class Lecture {
     private final String code;
-    private Date day;
+    private LocalDate day;
     private ArrayList<String> teachers;
     private String room;
     private Time start;
     private Time end;
     private final int sessionNumber;
 
-    public Lecture(String code,Date day ,ArrayList<String> teachers, String room, Time start, Time end, int sessionNumber) {
+    public Lecture(String code,String day ,ArrayList<String> teachers, String room, Time start, Time end, int sessionNumber) {
 
         this.code = code;
-        this.day = day;
+        this.day = LocalDate.parse(day);
         this.teachers = teachers;
         this.room = room;
         this.start = start;
@@ -25,11 +28,11 @@ public class Lecture {
         this.sessionNumber = sessionNumber;
     }
 
-    public Date getDay() {
+    public LocalDate getDay() {
         return day;
     }
 
-    public void setDay(Date day) {
+    public void setDay(LocalDate day) {
         this.day = day;
     }
 
