@@ -9,9 +9,20 @@ import java.util.List;
 @RestController
 public class UserController {
 
-    @GetMapping("/User/Read")
-    public List<User> UserRead(@RequestParam(value = "noma") String noma) {
-        return User.read(noma);
+    @GetMapping("/User/Lectures")
+    public List<Lecture> UserLectures(@RequestParam(value = "noma") String noma) {
+        return User.getLectures(noma);
     }
 
+    @PostMapping("/User/Subscribe")
+    public String UserSubscribe(@RequestParam(value = "noma") String noma, @RequestParam(value = "UEcode") String UEcode){
+        boolean response;
+        response = User.subscribe(noma,UEcode);
+        if(response) {
+            return "user : " + noma + " is register to : " + UEcode;
+        }
+        else {
+            return "error try later";
+        }
+    }
 }
