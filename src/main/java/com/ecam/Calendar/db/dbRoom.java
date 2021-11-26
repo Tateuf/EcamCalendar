@@ -6,8 +6,8 @@ public class dbRoom {
         return true;
     }
 
-    public static boolean checkAvaibility(String room, String day, String start, String end) {
-        //check is a room is avaible for this day and this hour.
+    public static boolean checkAvailability(String room, String day, String start, String end) {
+        //check is a room is available for this day and this hour.
         return true;
     }
 }

@@ -22,6 +22,6 @@ public class RoomController {
                                      @RequestParam(value = "day") String day,
                                      @RequestParam(value = "start") String start,
                                      @RequestParam(value = "end") String end){
-    return String.valueOf(Room.checkAvaibility(room,day,start,end));
+    return String.valueOf(Room.checkAvailability(room,day,start,end));
     }
 }

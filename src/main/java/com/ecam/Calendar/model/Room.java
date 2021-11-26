@@ -21,8 +21,8 @@ public class Room {
         return dbRoom.checkCapacity(room, code);
     }
 
-    public static boolean checkAvaibility(String room, String day, String start, String end) {
-        return dbRoom.checkAvaibility(room,day,start,end);
+    public static boolean checkAvailability(String room, String day, String start, String end) {
+        return dbRoom.checkAvailability(room,day,start,end);
     }
 
     public ArrayList<String> getRoom() {
