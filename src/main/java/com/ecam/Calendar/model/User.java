@@ -18,6 +18,7 @@ public class User {
     }
 
     public static boolean subscribe(String noma, String UEcode) {
+
         return dbUser.subscribe(noma,UEcode);
     }
 

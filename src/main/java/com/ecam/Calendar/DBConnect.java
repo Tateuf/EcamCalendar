@@ -6,7 +6,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
 public class DBConnect {
-    public int Ping() {
+    Connection conn;
+    ResultSet rs;
+    public int Connect_to_DB() {
         String deviceUser = "pi";
         String devicePassWord = "1453";
         String deviceHostName = "109.132.191.163";
@@ -30,7 +32,7 @@ public class DBConnect {
             System.out.println("Connection Established");
             DriverManager.registerDriver(new com.mysql.jdbc.Driver());
             System.out.println("Driver ok");
-            Connection con = DriverManager.getConnection("jdbc:mysql://" + dbHostName + ":" + forwardedPort + "/" + database, dbUser, dbPassWord);
+            conn = DriverManager.getConnection("jdbc:mysql://" + dbHostName + ":" + forwardedPort + "/" + database, dbUser, dbPassWord);
             System.out.println("Db Connection established");
         } catch (JSchException | SQLException e) {
             e.printStackTrace();
@@ -38,4 +40,39 @@ public class DBConnect {
         }
         return 0;
     }
+    public int Select(String select_statement){
+        Connect_to_DB();
+        try{
+            Statement stmt = conn.createStatement();
+            rs = stmt.executeQuery(select_statement);
+            conn.close();
+        }
+        catch (SQLException e){
+            System.out.println(e.getErrorCode());
+            return 1;
+        }
+        return 0;
+    }
+    public int Insert(String execute_query){
+        try{
+            Statement stmt = conn.createStatement();;
+            stmt.executeUpdate(execute_query);
+            conn.close();
+        }
+        catch (SQLException e){
+            System.out.println(e.getErrorCode());
+            return 1;
+        }
+        return 0;
+    }
+    public ResultSet GetSelect(String select_statement){
+        try{
+            Select(select_statement);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+        return rs;
+    }
+
 }
