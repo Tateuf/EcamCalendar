@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
+
 public class DBConnect {
     Connection conn;
     ResultSet rs;
@@ -45,7 +46,6 @@ public class DBConnect {
         try{
             Statement stmt = conn.createStatement();
             rs = stmt.executeQuery(select_statement);
-            conn.close();
         }
         catch (SQLException e){
             System.out.println(e.getErrorCode());
@@ -57,7 +57,6 @@ public class DBConnect {
         try{
             Statement stmt = conn.createStatement();;
             stmt.executeUpdate(execute_query);
-            conn.close();
         }
         catch (SQLException e){
             System.out.println(e.getErrorCode());
@@ -73,6 +72,14 @@ public class DBConnect {
             return null;
         }
         return rs;
+    }
+    public void Close_connection(){
+        try{
+            conn.close();
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+
     }
 
 }
