@@ -10,8 +10,8 @@ import java.util.List;
 public class UserController {
 
     @GetMapping("/User/Read")
-    public List<User> UserRead(@RequestParam(value = "code") String code) {
-        return User.read(code);
+    public List<User> UserRead(@RequestParam(value = "noma") String noma) {
+        return User.read(noma);
     }
 
 }

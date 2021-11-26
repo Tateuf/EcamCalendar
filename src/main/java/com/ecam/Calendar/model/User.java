@@ -6,13 +6,13 @@ import java.util.List;
 public class User {
     private String name;
     private String firstname;
-    private final String code;
+    private final String noma;
     private final String role;
 
-    public User(String name, String firstname, String code, String role) {
+    public User(String name, String firstname, String noma, String role) {
         this.name = name;
         this.firstname = firstname;
-        this.code = code;
+        this.noma = noma;
         this.role = role;
     }
 
@@ -33,7 +33,7 @@ public class User {
     }
 
     public String getCode() {
-        return code;
+        return noma;
     }
 
     public String getRole() {
@@ -45,7 +45,7 @@ public class User {
         return "User{" +
                 "name='" + name + '\'' +
                 ", firstname='" + firstname + '\'' +
-                ", code='" + code + '\'' +
+                ", noma='" + noma + '\'' +
                 ", role='" + role + '\'' +
                 '}';
     }
