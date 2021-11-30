@@ -11,4 +11,19 @@ class DBConnectTest {
         DBConnect db = new DBConnect();
         assertEquals(0, db.Connect_to_DB());
     }
+
+
+    @Test
+    void select() {
+        DBConnect db = new DBConnect();
+        assertEquals(0,db.Select("SELECT * FROM Logiciel.Users;"));
+
+    }
+
+    @Test
+    void insert() {
+        DBConnect db = new DBConnect();
+        assertEquals(0,db.Insert("INSERT INTO Logiciel.Users(code_user,lastName,firstName,role) VALUES ('TEST','Test','Testy','teacher');"));
+    }
+
 }

@@ -12,7 +12,7 @@ public class DBConnect {
     public int Connect_to_DB() {
         String deviceUser = "pi";
         String devicePassWord = "1453";
-        String deviceHostName = "109.132.191.163";
+        String deviceHostName = "109.136.92.35";
         int sshPort = 22;
         int dbPort = 3306;
         String dbUser = "user";
@@ -54,9 +54,11 @@ public class DBConnect {
         return 0;
     }
     public int Insert(String execute_query){
+        Connect_to_DB();
         try{
-            Statement stmt = conn.createStatement();;
+            Statement stmt = conn.createStatement();
             stmt.executeUpdate(execute_query);
+            conn.close();
         }
         catch (SQLException e){
             System.out.println(e.getErrorCode());
@@ -64,6 +66,7 @@ public class DBConnect {
         }
         return 0;
     }
+
     public ResultSet GetSelect(String select_statement){
         try{
             Select(select_statement);
