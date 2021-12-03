@@ -29,16 +29,12 @@ public class dbUser {
 
     public static List<Lecture> getLectures(String noma) {
         List<Lecture> lectures = new ArrayList<>();
-        //blabla sql
         ResultSet rs;
         try{
             DBConnect db = new DBConnect();
-            // "
-            //                    "(Select UE from Link_Users_UE where User = "+ noma + " ;"
             rs = db.GetSelect("Select * from Lecture where code_lecture in  " +
-                    "(Select UE from Link_Users_UE where User = '"+ noma + "' );");
+                    "(Select FK_lecture from UE where code_UE =(Select UE from Link_Users_UE where User = '"+ noma + "' ));");
             while (rs.next()){
-                //System.out.println(rs.getString("UE"));
 
                 String UECode = rs.getString("code_lecture");
                 String topic = rs.getString("topic");
