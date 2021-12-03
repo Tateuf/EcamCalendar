@@ -33,7 +33,7 @@ public class dbUser {
         try{
             DBConnect db = new DBConnect();
             rs = db.GetSelect("Select * from Lecture where code_lecture in  " +
-                    "(Select FK_lecture from UE where code_UE =(Select UE from Link_Users_UE where User = '"+ noma + "' ));");
+                    "(Select FK_lecture from UE where code_UE in (Select UE from Link_Users_UE where User = '"+ noma + "' ));");
             while (rs.next()){
 
                 String UECode = rs.getString("code_lecture");
