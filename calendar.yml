@@ -1,0 +1,273 @@
+openapi: 3.0.0
+info:
+  version: '1.0.0'
+  title: 'calendar_ecam'
+servers:
+  - url: 'localhost:8080'
+paths:
+  /Lecture/Create:
+    post:
+    summary: 'create a course session in the database'
+    operationId: createLecture
+
+    requestBody:
+      description: add lecture to database
+      content:
+        'application/json':
+          schema:
+            $ref: '#/components/schema/Lecture'
+          examples:
+            AL4-T:
+              summary: create one "coputer architecture" lecture session
+              value:
+                {
+                  "code" : "AL4T-T1",
+                  "day" : "2022-12-11",
+                  "teachers" : ["HSl; J3L"],
+                  "room" : "1D02",
+                  "start" : "08:30:00",
+                  "end" : "12:00:00",
+                  "sessionNumber" : 2
+                }
+    responses:
+      '201':
+        description: Lecture created
+
+  /Lecture/Read:
+    get:
+    summary: 'read info of course session'
+    operationId: readLecture
+
+    requestBody:
+      description: get info of course session
+      content:
+        'application/json':
+          schema:
+            Lecture:
+              type: object
+              required:
+                - code
+              properties:
+                code:
+                  type: string
+          examples:
+            AL4-T:
+              summary: get all sessions of "coputer architecture" lecture
+              value:
+                {
+                  "code" : "GA4T-T1"
+                }
+    responses:
+      '200':
+        description: Lecture retrieved
+        content:
+        'application/json':
+          schema:
+            array:
+              items:
+                type:
+                  $ref: '#/components/schema/Lecture'
+
+  /Lecture/Delete:
+    delete:
+    summary: 'delete course session'
+    operationId: deleteLecture
+
+    requestBody:
+      description: delete course session
+      content:
+        'application/json':
+          schema:
+            Lecture:
+              type: object
+              required:
+                - code
+                - sessionNumber
+              properties:
+                code:
+                  type: string
+                sessionNumber:
+                  type: integer
+          examples:
+            AL4-T:
+              summary: delete "coputer architecture" lecture n°2
+              value:
+                {
+                  "code" : "AL4-T",
+                  "sessionNumber" : 2
+                }
+
+    responses:
+      '200':
+        description: Lecture deletion
+        content:
+          text/plain:
+            schema:
+              type: string
+
+  /User/Lectures:
+    get:
+    summary: 'get list of all lectures of the user'
+    operationId: readLecture
+
+    requestBody:
+      description: get user lectures
+      content:
+        'application/json':
+          schema:
+            $ref : '#/components/schema/Noma'
+          examples:
+            18003:
+              summary: get Lectures of 18003
+              value:
+                {
+                  "noma" : "18003"
+                }
+
+
+    responses:
+      '200':
+        description: List of students from AL4-T
+        content:
+        'application/json':
+          schema:
+            array:
+              items:
+                type:
+                  $ref: '#/components/schema/Lecture'
+  /User/Subscribe:
+    post:
+    summary: 'subscribe a student to a course'
+    operationId: subscribeUser
+
+    requestBody:
+      description: create mapping record between student and course
+      content:
+        'application/json':
+          schema:
+            $ref '#/components/schema/Nomma'
+            $ref '#/components/schema/UEcode'
+
+          examples:
+            18003:
+              summary: retreive list of courses of courses of student 180003
+              value:
+                {
+                  "noma" : "18003",
+                  "UEcode" : "4eios40"
+                }
+    '200':
+      description: Lecture deletion
+      content:
+        text/plain:
+          schema:
+            type: string
+  /Room/Available:
+    get:
+    summary: 'check availability of a room'
+    operationId: availableRoom
+
+    requestBody:
+      description: check availability of a room
+      content:
+        'application/json':
+          schema:
+            $ref : '#/components/schema/RoomChack'
+          examples:
+            2E51:
+              summary: check availability of 2E51
+              value:
+                {
+                  "room" : "2E51",
+                  "day" : "2022-05-03",
+                  "start" : "08:30:00",
+                  "end" : "12:00:00"
+                }
+
+
+    responses:
+      '200':
+        description: room avalable or not
+        content:
+        'application/json':
+          schema:
+            type: string
+
+
+
+
+components:
+  schemas:
+    Lecture:
+      type: object
+      required:
+        - code
+        - day
+        - room
+        - start
+        - end
+      properties:
+        topic:
+          type: string
+        code:
+          type: string
+        day:
+          type: string
+        teachers:
+          type: array
+          items:
+            type: string
+        room:
+          type: string
+        start:
+          type: string
+        end:
+          type: string
+        sessionNumber:
+          type: integer
+
+    User:
+      type: object
+      required:
+        - code
+        - role
+      properties:
+        name:
+          type: string
+        firstname:
+          type: string
+        code:
+          type: string
+        role:
+          type: string
+    UEcode:
+      type: object
+      required:
+        -UEcode
+      properties:
+        UEcode:
+          type: string
+    Noma:
+      type: object
+      required:
+        -Noma
+      properties:
+        Noma:
+          type: string
+    RoomCheck:
+      type: object
+      required:
+        - room
+        - day
+        - start
+        - end
+      properties:
+        room:
+          type : string
+        day:
+          type : string
+        start:
+          type : string
+        end:
+          type : string
+
