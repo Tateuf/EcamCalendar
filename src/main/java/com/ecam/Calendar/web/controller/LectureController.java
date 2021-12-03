@@ -16,7 +16,6 @@ public class LectureController {
                                  @RequestParam(value = "start") String start, @RequestParam(value = "end") String end,
                                  @RequestParam(value = "sessionNumber") int sessionNumber) {
         Lecture lecture = new Lecture(code, day ,teachers, room, Time.valueOf(start), Time.valueOf(end), sessionNumber);
-        lecture.create();
         if (lecture.create()) {
             return "Lecture "+code+" created";
         }
