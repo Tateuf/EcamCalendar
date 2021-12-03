@@ -9,8 +9,8 @@ import java.net.URISyntaxException;
 @SpringBootApplication
 public class CalendarApplication {
 	public static void main(String[] args) throws ClassNotFoundException, IOException, InterruptedException, URISyntaxException {
-		HttpRequestExample httpRequestExample = new HttpRequestExample();
-		httpRequestExample.Print();
+		//HttpRequestExample httpRequestExample = new HttpRequestExample();
+		//httpRequestExample.Print();
 		SpringApplication.run(CalendarApplication.class, args);
 	}
 

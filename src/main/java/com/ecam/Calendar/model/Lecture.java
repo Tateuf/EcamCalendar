@@ -1,11 +1,10 @@
 package com.ecam.Calendar.model;
 
 import java.sql.Time;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import com.ecam.Calendar.db.dbLecture;
 
 
 public class Lecture {
@@ -91,25 +90,24 @@ public class Lecture {
     }
 
 
-    public void create() {
+    public boolean create() {
         //TODO link to database
-        //Database.CreateLecture()
+        return dbLecture.create(this.day,this.code,this.teachers,this.room,this.start,this.end,this.sessionNumber);
     }
 
 
     public static List<Lecture> read(String code) {
         //TODO link to database
-        //Database.readLecture()
-        return new ArrayList<Lecture>();
+        return dbLecture.read(code);
     }
 
-    public static void deleteLecture(String code) {
+    public static boolean deleteLecture(String code) {
         //TODO link to database
-        //Database.deleteLectures()
+        return dbLecture.deleteLecture(code);
     }
 
-    public static void deleteSession(String code,int sessionNumber) {
+    public static boolean deleteSession(String code,int sessionNumber) {
         //TODO link to database
-        //Database.deleteLecture()
+        return dbLecture.deleteSession(code,sessionNumber);
     }
 }
