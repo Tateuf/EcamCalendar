@@ -23,6 +23,8 @@ class DBConnectTest {
     @Test
     void insert() {
         DBConnect db = new DBConnect();
+        //if that one throws error try changing the code_user because
+        //its a primary key or just delete that row in the table with workbench
         assertEquals(0,db.Insert("INSERT INTO Logiciel.Users(code_user,lastName,firstName,role) VALUES ('TEST','Test','Testy','teacher');"));
     }
 
