@@ -33,11 +33,19 @@ public class LectureController {
     @DeleteMapping("/Lecture/Delete")
     public String lectureDelete(@RequestParam(value = "code") String code, @RequestParam(value = "sessionNumber", defaultValue = "-43") int sessionNumber){
         if(sessionNumber == -43){
-            Lecture.deleteLecture(code);
+            if (Lecture.deleteLecture(code)){
+                return "deleted successful";
+            }
+            else{
+                return "error";
+            }
         }
-        else{
-            Lecture.deleteSession(code,sessionNumber);
+        else {
+            if (Lecture.deleteSession(code,sessionNumber)) {
+                return "deleted successful";
+            } else {
+                return "error";
+            }
         }
-        return "deleted successful";
     }
 }

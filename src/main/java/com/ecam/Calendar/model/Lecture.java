@@ -101,13 +101,13 @@ public class Lecture {
         return dbLecture.read(code);
     }
 
-    public static void deleteLecture(String code) {
+    public static boolean deleteLecture(String code) {
         //TODO link to database
-        //Database.deleteLectures()
+        return dbLecture.deleteLecture(code);
     }
 
-    public static void deleteSession(String code,int sessionNumber) {
+    public static boolean deleteSession(String code,int sessionNumber) {
         //TODO link to database
-        //Database.deleteLecture()
+        return dbLecture.deleteSession(code,sessionNumber);
     }
 }

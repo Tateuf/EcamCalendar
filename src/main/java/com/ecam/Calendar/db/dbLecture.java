@@ -7,7 +7,7 @@ import java.sql.Time;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+
 
 import com.ecam.Calendar.DBConnect;
 
@@ -24,7 +24,6 @@ public class dbLecture {
         }
         try{
             DBConnect db = new DBConnect();
-
             db.Insert("Insert into Lecture(`code_lecture`,`room`, `startTime`,`endTime`, `sessionNumber`,`teachers`, `weekDay`) " +
                     "values('" + code +"','"+room+"','"+ start +"','"+ end + "','"+ sessionNumber + "','" +strTeachers+ "','" +day+"');");
             db.Close_connection();
@@ -63,5 +62,32 @@ public class dbLecture {
             System.out.println(e.getMessage());
         }
         return lectures;
+    }
+
+
+    public static boolean deleteLecture(String code) {
+        try{
+            DBConnect db = new DBConnect();
+            db.Insert("Delete * from Lecture where code_lecture = '"+code+"';");
+            db.Close_connection();
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean deleteSession(String code, int sessionNumber) {
+        try{
+            DBConnect db = new DBConnect();
+            db.Insert("Delete * from Lecture where code_lecture = '"+code+"' and sessionNumber = '"+sessionNumber+"';");
+            db.Close_connection();
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+        return true;
     }
 }
