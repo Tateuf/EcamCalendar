@@ -62,18 +62,4 @@ public class Room {
                 '}';
     }
 
-    public static ArrayList<String> grabRoomFromDB (ArrayList<String> room) {
-        //TODO link to database
-        return new ArrayList<String>();
-    }
-
-    public static void grabCapacityFromDB (int capacity) {
-        //TODO link to database
-    }
-
-    //lab or auditorium
-    public static void grabTypeFromDB (String type) {
-        //TODO link to database
-    }
-
 }
