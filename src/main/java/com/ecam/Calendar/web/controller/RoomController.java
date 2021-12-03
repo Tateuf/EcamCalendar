@@ -9,7 +9,7 @@ import java.util.List;
 public class RoomController {
 
 
-    @GetMapping("/Room/CheckCapacity")
+    @GetMapping("/Room/checkCapacity")
     public String checkCapacity(@RequestParam(value = "room") String room,@RequestParam(value= "code")String code){
         return String.valueOf(Room.checkCapacity(room, code));
     }
