@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class dbRoomTest {
     @Test
     void checkCapacity(){
-        assertEquals(true,dbRoom.checkCapacity("1D01","GA4T-T1"));
+        assertEquals(false,dbRoom.checkCapacity("1D01","GA4T-T1"));
     }
     @Test
     void checkAvailability(){
