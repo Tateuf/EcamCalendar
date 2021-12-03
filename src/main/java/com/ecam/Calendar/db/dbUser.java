@@ -29,7 +29,6 @@ public class dbUser {
 
     public static List<Lecture> getLectures(String noma) {
         List<Lecture> lectures = new ArrayList<>();
-        //blabla sql
         ResultSet rs;
         try{
             DBConnect db = new DBConnect();
