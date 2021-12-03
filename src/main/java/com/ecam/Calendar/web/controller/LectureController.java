@@ -11,13 +11,18 @@ import java.util.List;
 public class LectureController {
 
     @PostMapping("/Lecture/Create")
-    public Lecture lectureCreate(@RequestParam(value = "code") String code, @RequestParam(value = "day") String day,
+    public String lectureCreate(@RequestParam(value = "code") String code, @RequestParam(value = "day") String day,
                                  @RequestParam(value = "teachers") ArrayList<String> teachers, @RequestParam(value = "room") String room,
                                  @RequestParam(value = "start") String start, @RequestParam(value = "end") String end,
                                  @RequestParam(value = "sessionNumber") int sessionNumber) {
         Lecture lecture = new Lecture(code, day ,teachers, room, Time.valueOf(start), Time.valueOf(end), sessionNumber);
         lecture.create();
-        return lecture;
+        if (lecture.create()) {
+            return "Lecture "+code+" created";
+        }
+        else{
+            return "Error creating Lecture";
+        }
     }
 
     @GetMapping("/Lecture/Read")

@@ -16,7 +16,7 @@ public class dbUser {
     public static boolean subscribe(String noma, String UEcode) {
         try{
             DBConnect db = new DBConnect();
-            db.Insert("Insert into Link_Users_UE( User, UE) values(" +noma+", "+UEcode+ ");");
+            db.Insert("Insert into Link_Users_UE(User, UE) values('"+noma+"','"+UEcode+ "');");
             db.Close_connection();
         }
         catch (Exception e){
@@ -40,9 +40,9 @@ public class dbUser {
                 //System.out.println(rs.getString("UE"));
 
                 String UECode = rs.getString("code_lecture");
-                String topic = rs.getString("topic");
+                String topic = rs.getString("topic_lecture");
                 String room = rs.getString("room");
-                String day = rs.getString("day");
+                String day = rs.getString("weekDay");
                 Time start_time = rs.getTime("startTime");
                 Time end_time = rs.getTime("endTime");
                 int session_number = rs.getInt("sessionNumber");
