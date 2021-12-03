@@ -2,6 +2,7 @@ package com.ecam.Calendar.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.ecam.Calendar.db.dbUser;
 
 public class User {
     private String name;
@@ -15,6 +16,16 @@ public class User {
         this.noma = noma;
         this.role = role;
     }
+
+    public static boolean subscribe(String noma, String UEcode) {
+
+        return dbUser.subscribe(noma,UEcode);
+    }
+
+    public static List<Lecture> getLectures(String noma) {
+        return dbUser.getLectures(noma);
+    }
+
 
     public void setName(String name) {
         this.name = name;
@@ -32,7 +43,7 @@ public class User {
         return firstname;
     }
 
-    public String getCode() {
+    public String getNoma() {
         return noma;
     }
 
@@ -56,4 +67,5 @@ public class User {
         //Database.readLecture()
         return new ArrayList<User>();
     }
+
 }

@@ -7,8 +7,23 @@ import static org.junit.jupiter.api.Assertions.*;
 class DBConnectTest {
 
     @Test
-    void ping() {
+    void Connect_to_DB() {
         DBConnect db = new DBConnect();
-        assertEquals(0, db.Ping());
+        assertEquals(0, db.Connect_to_DB());
     }
+
+
+    @Test
+    void select() {
+        DBConnect db = new DBConnect();
+        assertEquals(0,db.Select("SELECT * FROM Logiciel.Users;"));
+
+    }
+
+    @Test
+    void insert() {
+        DBConnect db = new DBConnect();
+        assertEquals(0,db.Insert("INSERT INTO Logiciel.Users(code_user,lastName,firstName,role) VALUES ('TEST','Test','Testy','teacher');"));
+    }
+
 }
