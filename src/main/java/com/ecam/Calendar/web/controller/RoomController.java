@@ -8,12 +8,9 @@ import java.util.List;
 @RestController
 public class RoomController {
 
-    @GetMapping("/Room/Read")
-    public List<String> roomRead(@RequestParam(value = "room") ArrayList<String> room) {
-        return Room.grabRoomFromDB(room);
-    }
 
-    public String checkCapacity(String room,String code){
+    @GetMapping("/Room/CheckCapacity")
+    public String checkCapacity(@RequestParam(value = "room") String room,@RequestParam(value= "code")String code){
         return String.valueOf(Room.checkCapacity(room, code));
     }
 
