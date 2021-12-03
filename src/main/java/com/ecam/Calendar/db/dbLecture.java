@@ -68,7 +68,12 @@ public class dbLecture {
     public static boolean deleteLecture(String code) {
         try{
             DBConnect db = new DBConnect();
-            db.Insert("Delete * from Lecture where code_lecture = '"+code+"';");
+            ResultSet rs;
+            rs = db.GetSelect("Select id_lecture from Lecture where code_lecture = '"+code+"';");
+            while (rs.next()){
+                String id = rs.getString("id_lecture");
+                db.Insert("Delete from Lecture where id_lecture = '"+id+"';");
+            }
             db.Close_connection();
         }
         catch (Exception e){
@@ -81,7 +86,12 @@ public class dbLecture {
     public static boolean deleteSession(String code, int sessionNumber) {
         try{
             DBConnect db = new DBConnect();
-            db.Insert("Delete * from Lecture where code_lecture = '"+code+"' and sessionNumber = '"+sessionNumber+"';");
+            ResultSet rs;
+            rs = db.GetSelect("Select id_lecture from Lecture where code_lecture = '"+code+"' and sessionNumber = '"+sessionNumber+"';");
+            while (rs.next()){
+                String id = rs.getString("id_lecture");
+                db.Insert("Delete from Lecture where id_lecture = '"+id+"';");
+            }
             db.Close_connection();
         }
         catch (Exception e){
