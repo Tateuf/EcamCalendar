@@ -172,7 +172,7 @@ paths:
       content:
         'application/json':
           schema:
-            $ref : '#/components/schema/RoomChack'
+            $ref : '#/components/schema/RoomCheck'
           examples:
             2E51:
               summary: check availability of 2E51
@@ -182,6 +182,36 @@ paths:
                   "day" : "2022-05-03",
                   "start" : "08:30:00",
                   "end" : "12:00:00"
+                }
+
+
+    responses:
+      '200':
+        description: room avalable or not
+        content:
+        'application/json':
+          schema:
+            type: string
+
+  /Room/checkCapacity:
+    get:
+    summary: 'check capacity of a room to fit all students for a lecture'
+    operationId: availableRoom
+
+    requestBody:
+      description: check if all students fit in room
+      content:
+        'application/json':
+          schema:
+            "room" : string,
+            "code" : string
+          examples:
+            2E51:
+              summary: check capacity of 1D01
+              value:
+                {
+                  "room" : "1D01",
+                  "code" : "AL4T-T1"
                 }
 
 
