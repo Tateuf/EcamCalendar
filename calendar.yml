@@ -21,13 +21,13 @@ paths:
               summary: create one "coputer architecture" lecture session
               value:
                 {
-                  "code" : "AL4T-T1",
+                  "code" : "SI4C-L1",
                   "day" : "2022-12-11",
-                  "teachers" : ["HSl; J3L"],
-                  "room" : "1D02",
+                  "teachers" : ["MCH; MDM"],
+                  "room" : "1F04",
                   "start" : "08:30:00",
                   "end" : "12:00:00",
-                  "sessionNumber" : 2
+                  "sessionNumber" : 1
                 }
     responses:
       '201':
