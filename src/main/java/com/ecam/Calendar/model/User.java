@@ -1,6 +1,5 @@
 package com.ecam.Calendar.model;
 
-import java.util.ArrayList;
 import java.util.List;
 import com.ecam.Calendar.db.dbUser;
 
@@ -16,16 +15,6 @@ public class User {
         this.noma = noma;
         this.role = role;
     }
-
-    public static boolean subscribe(String noma, String UEcode) {
-
-        return dbUser.subscribe(noma,UEcode);
-    }
-
-    public static List<Lecture> getLectures(String noma) {
-        return dbUser.getLectures(noma);
-    }
-
 
     public void setName(String name) {
         this.name = name;
@@ -61,11 +50,12 @@ public class User {
                 '}';
     }
 
+    public static boolean subscribe(String noma, String UEcode) {
+        return dbUser.subscribe(noma,UEcode);
+    }
 
-    public static List<User> read(String code) {
-        //TODO link to database
-        //Database.readLecture()
-        return new ArrayList<User>();
+    public static List<Lecture> getLectures(String noma) {
+        return dbUser.getLectures(noma);
     }
 
 }

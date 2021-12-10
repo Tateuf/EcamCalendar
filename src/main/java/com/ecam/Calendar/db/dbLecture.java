@@ -1,14 +1,11 @@
 package com.ecam.Calendar.db;
 
 import com.ecam.Calendar.model.Lecture;
-
 import java.sql.ResultSet;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
-
-
 import com.ecam.Calendar.DBConnect;
 
 

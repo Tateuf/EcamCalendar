@@ -1,8 +1,8 @@
 package com.ecam.Calendar.web.controller;
+
 import com.ecam.Calendar.model.Lecture;
 import com.ecam.Calendar.model.User;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 

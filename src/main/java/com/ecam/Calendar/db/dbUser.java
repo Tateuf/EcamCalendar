@@ -2,14 +2,12 @@ package com.ecam.Calendar.db;
 
 import com.ecam.Calendar.DBConnect;
 import com.ecam.Calendar.model.Lecture;
-
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
+
 
 public class dbUser {
 
