@@ -41,6 +41,7 @@ Since this microservice is purely backend development, *postman* is used to chec
 
 - **OpenApi**<br/>
 OpenApi defines the format in which the YAML file should be written.
+https://spec.openapis.org/oas/latest.html
 ###Current features
 
 - The teacher can add a time slot with the class he wants to teach.
