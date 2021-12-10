@@ -16,8 +16,8 @@ class dbLectureTest {
         ArrayList<String> teachers = new ArrayList<>();
         teachers.add("HSL");
         teachers.add("J3L");
-        assertTrue(dbLecture.create(LocalDate.parse("2022-12-11"),
-                                    "test-T1",teachers,"1D02",
+        assertTrue(dbLecture.create(LocalDate.parse("2020-12-11"),
+                                    "test-T1",teachers,"1D01",
                                     Time.valueOf("08:30:00"),Time.valueOf("12:00:00"),
                                     1));
         assertTrue((dbLecture.deleteLecture("test-T1")));
@@ -28,11 +28,11 @@ class dbLectureTest {
         ArrayList<String> teachers = new ArrayList<>();
         teachers.add("HSL");
         teachers.add("J3L");
-        assertTrue(dbLecture.create(LocalDate.parse("2022-12-11"),
-                "test-T1",teachers,"1D02",
+        assertTrue(dbLecture.create(LocalDate.parse("2020-12-11"),
+                "test-T1",teachers,"1D01",
                 Time.valueOf("08:30:00"),Time.valueOf("12:00:00"),
                 1));
-        assertEquals(dbLecture.read("test-T1").get(0).getDay(),LocalDate.parse("2022-12-11"));
+        assertEquals(dbLecture.read("test-T1").get(0).getDay(),LocalDate.parse("2020-12-11"));
         assertTrue((dbLecture.deleteLecture("test-T1")));
     }
 
@@ -41,8 +41,8 @@ class dbLectureTest {
         ArrayList<String> teachers = new ArrayList<>();
         teachers.add("HSL");
         teachers.add("J3L");
-        assertTrue(dbLecture.create(LocalDate.parse("2022-12-11"),
-                "test-T1",teachers,"1D02",
+        assertTrue(dbLecture.create(LocalDate.parse("2020-12-11"),
+                "test-T1",teachers,"1D01",
                 Time.valueOf("08:30:00"),Time.valueOf("12:00:00"),
                 3));
         assertTrue(dbLecture.deleteSession("test-T1",3));
@@ -53,12 +53,12 @@ class dbLectureTest {
         ArrayList<String> teachers = new ArrayList<>();
         teachers.add("HSL");
         teachers.add("J3L");
-        assertTrue(dbLecture.create(LocalDate.parse("2022-12-11"),
-                "test-T1",teachers,"1D02",
+        assertTrue(dbLecture.create(LocalDate.parse("2020-12-11"),
+                "test-T1",teachers,"1D01",
                 Time.valueOf("08:30:00"),Time.valueOf("12:00:00"),
                 1));
-        assertTrue(dbLecture.create(LocalDate.parse("2022-12-11"),
-                "test-T1",teachers,"1D02",
+        assertTrue(dbLecture.create(LocalDate.parse("2020-12-12"),
+                "test-T1",teachers,"1D01",
                 Time.valueOf("08:30:00"),Time.valueOf("12:00:00"),
                 2));
         assertTrue((dbLecture.deleteLecture("test-T1")));
