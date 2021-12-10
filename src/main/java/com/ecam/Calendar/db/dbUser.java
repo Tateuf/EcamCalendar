@@ -39,7 +39,7 @@ public class dbUser {
             }
             else {
                 rs = db.GetSelect("Select * from Lecture where code_lecture in" +
-                        "(Select pk_lecture from Lectures where teachers like '"+noma+"');");
+                        "(Select Pk_lecture from Lectures where teachers like '"+noma+"');");
             }
             while (rs.next()){
 
