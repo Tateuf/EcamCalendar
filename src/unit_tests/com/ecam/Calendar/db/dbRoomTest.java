@@ -30,7 +30,7 @@ public class dbRoomTest {
     @Test
     void getRecommondations(){
         List<Room> rooms =  dbRoom.getRecommondations("4mage40","2022-12-12","12:45:00","14:15:00");
-        assertEquals("1E01",rooms.get(0).getRoom());
-        assertEquals("1E02",rooms.get(1).getRoom());
+        assertEquals("2F20",rooms.get(0).getRoom());
+        assertEquals("2F28",rooms.get(1).getRoom());
     }
 }
