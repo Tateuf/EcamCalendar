@@ -42,7 +42,6 @@ public class dbUser {
             while (rs.next()){
 
                 String UECode = rs.getString("code_lecture");
-                String topic = rs.getString("topic_lecture");
                 String room = rs.getString("room");
                 String day = rs.getString("weekDay");
                 Time start_time = rs.getTime("startTime");
