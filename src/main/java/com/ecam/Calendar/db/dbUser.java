@@ -30,8 +30,15 @@ public class dbUser {
         ResultSet rs;
         try{
             DBConnect db = new DBConnect();
-            rs = db.GetSelect("Select * from Lecture where code_lecture in  " +
-                    "(Select FK_lecture from UE where code_UE in (Select UE from Link_Users_UE where User = '"+ noma + "' ));");
+            System.out.println(noma.length());
+            if(noma.length() == 5){
+                rs = db.GetSelect("Select * from Lecture where code_lecture in  " +
+                        "(Select FK_lecture from UE where code_UE in (Select UE from Link_Users_UE where User = '"+ noma + "' ));");
+            }
+            else {
+                rs = db.GetSelect("Select * from Lecture where code_lecture in" +
+                        "(Select Pk_lecture from Lectures where teachers like '"+noma+"');");
+            }
             while (rs.next()){
 
                 String UECode = rs.getString("code_lecture");

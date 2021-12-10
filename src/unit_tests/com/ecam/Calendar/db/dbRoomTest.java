@@ -22,6 +22,7 @@ public class dbRoomTest {
         String day = "2022-12-11";
         String start ="10:15:00";
         String end = "11:45:00" ;
+
         assertEquals(false,dbRoom.checkAvailability(room,day,start,end));
         start = "12:45:00";
         end = "14:15:00";
@@ -32,5 +33,6 @@ public class dbRoomTest {
         List<Room> rooms =  dbRoom.getRecommondations("4mage40","2022-12-12","12:45:00","14:15:00");
         assertEquals("2F20",rooms.get(0).getRoom());
         assertEquals("2F28",rooms.get(1).getRoom());
+
     }
 }

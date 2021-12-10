@@ -50,16 +50,19 @@ public class dbRoom {
         }
         return isAvailable;
     }
+
     public static List<Room> getRecommondations(String code,String day,String start, String end){
-        //check for the rooms that are big enough and available
+
         List<Room> rooms= new ArrayList<>();
         try{
             DBConnect db= new DBConnect();
             ResultSet rs;
+
             rs =  db.GetSelect("select code_room, capacity, type from Rooms " +
                     "where capacity > (select count(*) from Link_Users_UE where UE='"+code+"') and " +
                     "(select Check_Availability(code_room,'"+day+"','"+start+"','"+end+"'))=1" +
                     " order by capacity;");
+
             while (rs.next()){
                 String code_room = rs.getString("code_room");
                 String type = rs.getString("type");

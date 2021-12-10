@@ -12,8 +12,7 @@ class dbUserTest {
 
     @Test
     void getLectures() {
-        List<Lecture> value = dbUser.getLectures("mumu");
+        List<Lecture> value = dbUser.getLectures("00000");
         assertEquals("DKP",value.get(0).getTeachers().get(0));
-        assertEquals("DFR",value.get(0).getTeachers().get(1));
     }
 }

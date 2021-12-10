@@ -4,7 +4,6 @@ import com.ecam.Calendar.db.dbRoom;
 
 
 public class Room {
-
     private String room;
     private String type;
     private int capacity;
@@ -47,7 +46,6 @@ public class Room {
                 ", capacity=" + capacity +
                 '}';
     }
-
     public static boolean checkCapacity(String room, String code) {
         return dbRoom.checkCapacity(room, code);
     }
