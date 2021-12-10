@@ -1,14 +1,11 @@
 package com.ecam.Calendar.db;
 
 import com.ecam.Calendar.model.Lecture;
-
 import java.sql.ResultSet;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
-
-
 import com.ecam.Calendar.DBConnect;
 
 
@@ -24,9 +21,14 @@ public class dbLecture {
         }
         try{
             DBConnect db = new DBConnect();
-            db.Insert("Insert into Lecture(`code_lecture`,`room`, `startTime`,`endTime`, `sessionNumber`,`teachers`, `weekDay`) " +
-                    "values('" + code +"','"+room+"','"+ start +"','"+ end + "','"+ sessionNumber + "','" +strTeachers+ "','" +day+"');");
-            db.Close_connection();
+            if (dbRoom.checkAvailability(room,day.toString(),start.toString(),end.toString()) && dbRoom.checkCapacity(room,code)){
+                db.Insert("Insert into Lecture(`code_lecture`,`room`, `startTime`,`endTime`, `sessionNumber`,`teachers`, `weekDay`) " +
+                        "values('" + code +"','"+room+"','"+ start +"','"+ end + "','"+ sessionNumber + "','" +strTeachers+ "','" +day+"');");
+                db.Close_connection();
+            }
+            else{
+                return false;
+            }
         }
         catch (Exception e){
             System.out.println(e.getMessage());

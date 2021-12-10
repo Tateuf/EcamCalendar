@@ -89,25 +89,19 @@ public class Lecture {
                 '}';
     }
 
-
     public boolean create() {
-        //TODO link to database
         return dbLecture.create(this.day,this.code,this.teachers,this.room,this.start,this.end,this.sessionNumber);
     }
 
-
     public static List<Lecture> read(String code) {
-        //TODO link to database
         return dbLecture.read(code);
     }
 
     public static boolean deleteLecture(String code) {
-        //TODO link to database
         return dbLecture.deleteLecture(code);
     }
 
     public static boolean deleteSession(String code,int sessionNumber) {
-        //TODO link to database
         return dbLecture.deleteSession(code,sessionNumber);
     }
 }
