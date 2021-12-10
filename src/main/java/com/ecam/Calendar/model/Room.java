@@ -8,14 +8,14 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Room {
-    private ArrayList<String> room;
+    private String room;
     private String type;
     private int capacity;
 
     //private  teacher;
 
 
-    public Room(ArrayList<String> room, String type, int capacity) {
+    public Room(String room, String type, int capacity) {
         this.room = room;
         this.type = type;
         this.capacity = capacity;
@@ -29,11 +29,11 @@ public class Room {
         return dbRoom.checkAvailability(room,day,start,end);
     }
 
-    public ArrayList<String> getRoom() {
+    public String getRoom() {
         return room;
     }
 
-    public void setRoom(ArrayList<String> room) {
+    public void setRoom(String room) {
         this.room = room;
     }
 

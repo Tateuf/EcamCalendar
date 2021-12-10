@@ -1,11 +1,14 @@
 package com.ecam.Calendar.db;
 
 import com.ecam.Calendar.DBConnect;
+import com.ecam.Calendar.model.Room;
 
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.Time;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class dbRoom {
     public static boolean checkCapacity(String room,String code) {
@@ -49,6 +52,26 @@ public class dbRoom {
             System.out.println(e.getMessage());
         }
         return isAvailable;
+    }
+    public static List<Room> getRecommondations(String code,String day,String start, String end){
+        List<Room> rooms= new ArrayList<>();
+        try{
+            DBConnect db= new DBConnect();
+            ResultSet rs;
+            rs =  db.GetSelect("select code_room, capacity, type from Rooms " +
+                    "where capacity > (select count(*) from Link_Users_UE where UE='"+code+"') and " +
+                    "(select Check_Availability(code_room,'"+day+"','"+start+"','"+end+"'))=1;");
+            while (rs.next()){
+                String code_room = rs.getString("code_room");
+                String type = rs.getString("type");
+                int capacity = rs.getInt("capacity");
+                rooms.add(new Room(code_room,type,capacity));
+            }
+            //add code here to add each room to rooms list
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return rooms;
     }
 }
 
