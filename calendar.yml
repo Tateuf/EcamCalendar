@@ -17,8 +17,8 @@ paths:
           schema:
             $ref: '#/components/schema/Lecture'
           examples:
-            AL4-T:
-              summary: create one "coputer architecture" lecture session
+            SI4C-L1:
+              summary: create one "Labo instrumentation" lecture session
               value:
                 {
                   "code" : "SI4C-L1",
@@ -51,11 +51,11 @@ paths:
                 code:
                   type: string
           examples:
-            AL4-T:
+            AL4T-T1:
               summary: get all sessions of "coputer architecture" lecture
               value:
                 {
-                  "code" : "GA4T-T1"
+                  "code" : "AL4T-T1"
                 }
     responses:
       '200':
@@ -89,11 +89,11 @@ paths:
                 sessionNumber:
                   type: integer
           examples:
-            AL4-T:
+            AL4T-T1:
               summary: delete "coputer architecture" lecture n°2
               value:
                 {
-                  "code" : "AL4-T",
+                  "code" : "AL4T-T1",
                   "sessionNumber" : 2
                 }
 
@@ -127,7 +127,7 @@ paths:
 
     responses:
       '200':
-        description: List of students from AL4-T
+        description: List of 18003 's lectures
         content:
         'application/json':
           schema:
@@ -149,15 +149,15 @@ paths:
             $ref '#/components/schema/UEcode'
 
           examples:
-            18003:
-              summary: retreive list of courses of courses of student 180003
+            18003OS:
+              summary: subscribe student 180003 to Operating Systems UE
               value:
                 {
                   "noma" : "18003",
                   "UEcode" : "4eios40"
                 }
     '200':
-      description: Lecture deletion
+      description: User "noma" subscribed to "UEcode"
       content:
         text/plain:
           schema:
